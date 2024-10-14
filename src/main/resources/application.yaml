@@ -1,8 +1,6 @@
 spring:
-  application:
-    name: jsonWebToken
   datasource:
-    url: jdbc:postgresql://127.0.01/codify
+    url: jdbc:postgresql://127.0.0.1:5432/codify
     username: postgres
     password: new_password
   jpa:
@@ -12,4 +10,3 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
-
