@@ -23,13 +23,14 @@ public class MyUsersDetails implements UserDetailsService {
         }else{
             var userObj=myUsers.get();
             return User.builder()
-
-
+                    .password(userObj.getPassword())
+                    .username(userObj.getUsername())
+                    .roles(getRoles(userObj))
                     .build();
-
-    }
-
-
-
+    }}
+    private String[] getRoles(MyUsers userObj) {
+        if(userObj.getRoles()==null){
+            return new String[]{"USER"};
+        }else return userObj.getRoles().split(",");
     }
 }
