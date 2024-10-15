@@ -1,5 +1,6 @@
 package com.mwas.jsonWebToken.Security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,13 +13,15 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigs {
+    @Autowired
+    private MyUsersDetails myUsersDetails;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .authorizeHttpRequests(registry -> {
                     registry.requestMatchers("/").permitAll();
                     registry.requestMatchers("/admin/**").hasRole("ADMIN");
-                    registry.requestMatchers("/user/**");
+                    registry.requestMatchers("/user/**").hasRole("USER");
                 })
                 .build();
     }
@@ -26,6 +29,7 @@ public class SecurityConfigs {
     public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
+        provider.setUserDetailsService(myUsersDetails);
         return provider;
     }
     @Bean
