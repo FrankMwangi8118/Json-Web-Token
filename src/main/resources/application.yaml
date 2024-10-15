@@ -15,7 +15,7 @@ server:
   port: 8090
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/School
+    url: jdbc:postgresql://127.0.0.1:5432/Attendance
     username: postgres
     password: root
   jpa:
@@ -24,3 +24,4 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+    show-sql: true

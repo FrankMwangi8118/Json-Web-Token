@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class JwtService {
 
     private static final String SECRETKEY="81CF9DDE6D77C0F86D4B068C92404D11FA27C94B700348B51A4D9F024C3EDAB35DDE4ACEF63A260DB8FDB96B772F49A72F5824CF06F82B7306FBDACD6AB2221B";
-    public static final long VALIDITY= TimeUnit.MINUTES.toMillis(30);
+    public static final long VALIDITY= TimeUnit.MINUTES.toMillis(56);
     public String generateToken(UserDetails userDetails){
         Map<String,String> claims =new HashMap<>();
         claims.put("iss","mwass.io");
